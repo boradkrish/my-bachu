@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Bachu (Yashvi) ♡ Princess Day</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Caveat -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        handwriting: ['Caveat', 'cursive'],
+                    },
+                    colors: {
+                        darkBg: '#0b0f19',
+                        cardDark: 'rgba(18, 24, 38, 0.75)',
+                        roseAccent: '#ff4b6e',
+                        softGold: '#fbcfe8',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b0f19;
+            color: #f3f4f6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Background Glow */
+        .ambient-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 75, 110, 0.15) 0%, rgba(11, 15, 25, 0) 70%);
+            top: -100px;
+            left: -100px;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .ambient-glow-2 {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, rgba(11, 15, 25, 0) 70%);
+            bottom: -150px;
+            right: -150px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Floating Hearts Animation */
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 75, 110, 0.4);
+            animation: floatUp 9s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) scale(0.6) rotate(0deg);
+                opacity: 0;
+            }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.8; }
+            100% {
+                transform: translateY(-10vh) scale(1.3) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Glassmorphism Dark Card */
+        .glass-dark {
+            background: rgba(18, 24, 38, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 75, 110, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Envelope open animation */
+        .envelope-flap {
+            transition: transform 0.6s ease-in-out;
+            transform-origin: top;
+        }
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="selection:bg-pink-500 selection:text-white">
+
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow-2"></div>
+    <div id="hearts-container" class="fixed inset-0 overflow-hidden pointer-events-none"></div>
+
+    <!-- 1. Romantic Landing Modal / Intro Screen -->
+    <div id="welcome-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity duration-700">
+        <div class="glass-dark rounded-3xl p-8 max-w-md w-full text-center relative overflow-hidden shadow-2xl border border-pink-500/30">
+            <div class="absolute -top-6 -right-6 w-24 h-24 bg-pink-500/10 rounded-full flex items-center justify-center blur-md"></div>
+            
+            <div class="inline-block p-4 bg-pink-500/20 rounded-2xl mb-4 text-pink-400 text-3xl shadow-inner">
+                <i class="fa-solid fa-crown animate-bounce"></i>
+            </div>
+
+            <h1 class="text-3xl font-bold font-handwriting text-white mb-2">Happy Princess Day, My Bachu (Yashvi)! ♡</h1>
+            <p class="text-xs text-slate-300 mb-6 leading-relaxed">
+                Today is all about celebrating the most gorgeous princess in my universe. I made this magical digital space just for you, my love. Click below to enter! ✨
+            </p>
+
+            <button onclick="enterWebsite()" class="w-full py-3.5 px-6 bg-gradient-to-r from-pink-500 to-rose-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-pink-500/50 transform hover:-translate-y-0.5 transition duration-300 flex items-center justify-center space-x-2">
+                <span>Open My Princess World</span>
+                <i class="fa-solid fa-arrow-right text-white"></i>
+            </button>
+
+            <p class="text-[11px] text-slate-500 mt-4">From Krish, with all my heart ♡</p>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main id="main-content" class="max-w-4xl mx-auto px-4 py-12 relative z-10 opacity-0 transition-opacity duration-1000 hidden">
+        
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <div class="inline-flex items-center space-x-2 bg-pink-500/10 border border-pink-500/30 px-4 py-1.5 rounded-full shadow-sm text-xs font-semibold text-pink-400 mb-3">
+                <i class="fa-solid fa-crown"></i>
+                <span>Happy Princess Day — Yashvi (Bachu) & Krish</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold font-handwriting text-white">My Queen, My Everything</h1>
+        </header>
+
+        <!-- 2. Love Journey Counter & Milestones -->
+        <section class="mb-16">
+            <div class="glass-dark rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-6 opacity-10 text-6xl text-pink-500"><i class="fa-solid fa-heart"></i></div>
+                
+                <div class="text-center mb-6">
+                    <span class="text-xs font-bold tracking-widest text-pink-400 uppercase">Our Relationship Journey</span>
+                    <h2 class="text-2xl md:text-3xl font-bold font-handwriting text-white mt-1">Together Since August 22, 2025</h2>
+                    <p class="text-xs text-slate-400 mt-1">Every second with you is my absolute favorite second.</p>
+                </div>
+
+                <!-- Live Counter Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 text-center">
+                    <div class="bg-black/30 p-4 rounded-2xl border border-pink-500/10">
+                        <span id="days-count" class="text-3xl md:text-4xl font-bold text-white">0</span>
+                        <p class="text-xs text-pink-400 uppercase tracking-wider mt-1 font-semibold">Days</p>
+                    </div>
+                    <div class="bg-black/30 p-4 rounded-2xl border border-pink-500/10">
+                        <span id="hours-count" class="text-3xl md:text-4xl font-bold text-white">0</span>
+                        <p class="text-xs text-pink-400 uppercase tracking-wider mt-1 font-semibold">Hours</p>
+                    </div>
+                    <div class="bg-black/30 p-4 rounded-2xl border border-pink-500/10">
+                        <span id="minutes-count" class="text-3xl md:text-4xl font-bold text-white">0</span>
+                        <p class="text-xs text-pink-400 uppercase tracking-wider mt-1 font-semibold">Minutes</p>
+                    </div>
+                    <div class="bg-black/30 p-4 rounded-2xl border border-pink-500/10">
+                        <span id="seconds-count" class="text-3xl md:text-4xl font-bold text-white">0</span>
+                        <p class="text-xs text-pink-400 uppercase tracking-wider mt-1 font-semibold">Seconds</p>
+                    </div>
+                </div>
+
+                <!-- Milestone Badge -->
+                <div class="flex flex-wrap items-center justify-between gap-4 bg-pink-500/10 border border-pink-500/20 px-6 py-4 rounded-2xl text-xs">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">👑</span>
+                        <div>
+                            <strong class="text-white block text-sm">Princess Day Special</strong>
+                            <span class="text-slate-300">Celebrating the most wonderful girl who rules my heart completely!</span>
+                        </div>
+                    </div>
+                    <div class="text-pink-300 font-semibold font-handwriting text-lg">"My Forever Princess"</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Photo Memories Section -->
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <span class="text-xs font-bold tracking-wider text-pink-400 uppercase">Precious Memories</span>
+                <h2 class="text-3xl font-bold font-handwriting text-white mt-1">My Gorgeous Bachu ♡</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Photo Card 1 -->
+                <div class="glass-dark rounded-3xl p-4 border border-pink-500/20 shadow-xl overflow-hidden group">
+                    <div class="overflow-hidden rounded-2xl mb-3 relative h-96 bg-slate-900 flex items-center justify-center">
+                        <img src="photo1.jpeg" alt="Yashvi in pink attire" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <span class="text-xs text-pink-200 font-handwriting text-base">Radiant like flowers ✨</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-center font-handwriting text-pink-300 text-lg">My absolute princess in pink ♡</p>
+                </div>
+
+                <!-- Photo Card 2 -->
+                <div class="glass-dark rounded-3xl p-4 border border-pink-500/20 shadow-xl overflow-hidden group">
+                    <div class="overflow-hidden rounded-2xl mb-3 relative h-96 bg-slate-900 flex items-center justify-center">
+                        <img src="photo2.jpeg" alt="Yashvi portrait" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <span class="text-xs text-pink-200 font-handwriting text-base">Your lovely smile melts my heart 💕</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-center font-handwriting text-pink-300 text-lg">My sweetest Bachu forever ♡</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Interactive Love Letter & Birthday Moon Section -->
+        <section class="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Love Letter Box -->
+            <div class="glass-dark rounded-3xl p-6 md:p-8 shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold font-handwriting text-white flex items-center space-x-2">
+                            <span>Princess Day Love Letter 💌</span>
+                        </h2>
+                        <span class="text-xs text-pink-400">From Krish</span>
+                    </div>
+
+                    <!-- Envelope -->
+                    <div id="envelope" class="relative w-full h-52 bg-slate-900/80 rounded-2xl cursor-pointer flex flex-col items-center justify-center shadow-inner overflow-hidden border border-pink-500/30 mb-4" onclick="openLetterModal()">
+                        <!-- Envelope Flap -->
+                        <div class="absolute inset-0 z-20 pointer-events-none flex flex-col justify-between p-4">
+                            <div class="w-full h-16 bg-slate-800/90 origin-top envelope-flap rounded-t-xl border-b border-pink-500/20" style="clip-path: polygon(0 0, 50% 100%, 100% 0);"></div>
+                            <div class="flex justify-center pb-1 pointer-events-auto">
+                                <div class="bg-pink-500/20 backdrop-blur-sm px-3 py-1 rounded-full border border-pink-500/40 text-[11px] font-bold text-pink-300 flex items-center space-x-1 animate-pulse">
+                                    <i class="fa-solid fa-envelope-open"></i>
+                                    <span>Click to Open Letter</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center p-4 z-10 text-slate-400">
+                            <i class="fa-solid fa-heart text-3xl text-pink-500/60 mb-2"></i>
+                            <p class="text-xs">A heartfelt letter written just for Yashvi</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 text-center">Tap the envelope to open my full emotional message.</p>
+            </div>
+
+            <!-- The Moon on Yashvi's Birthday (Jan 16, 2008) -->
+            <div class="glass-dark rounded-3xl p-6 md:p-8 shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-xs font-bold tracking-wider text-pink-400 uppercase">Special Keepsake</span>
+                        <span class="text-xs text-slate-400">Jan 16, 2008</span>
+                    </div>
+                    <h2 class="text-xl font-bold font-handwriting text-white mb-2">The Moon the Night Bachu Was Born</h2>
+                    <p class="text-xs text-slate-300 mb-6 leading-relaxed">
+                        On January 16, 2008, the universe welcomed a very special princess into this world — my Yashvi.
+                    </p>
+
+                    <!-- Moon Widget Card -->
+                    <div class="bg-black/40 rounded-2xl p-4 flex items-center space-x-4 border border-pink-500/20">
+                        <div class="relative w-20 h-20 rounded-full bg-slate-800 shadow-[0_0_20px_rgba(255,182,193,0.3)] flex items-center justify-center border border-slate-700 overflow-hidden flex-shrink-0">
+                            <div class="absolute inset-0 bg-slate-950/70 rounded-full" style="clip-path: polygon(0 0, 55% 0, 55% 100%, 0 100%);"></div>
+                            <span class="absolute z-10 text-lg">🌙</span>
+                        </div>
+                        <div>
+                            <span class="text-[11px] text-pink-400 font-semibold uppercase">Waning Crescent / Special Moon</span>
+                            <h3 class="text-sm font-bold text-white mt-0.5">The Star That Lighted My Life</h3>
+                            <p class="text-[11px] text-slate-300 mt-1">A gentle, serene radiance that defines your beautiful soul.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <span class="text-xs text-pink-300 font-handwriting text-base">"Born to bring endless light to my heart."</span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 border-t border-pink-500/20 mt-12">
+            <div class="flex justify-center items-center space-x-2 text-pink-400 mb-2">
+                <i class="fa-solid fa-heart animate-bounce"></i>
+                <span class="font-handwriting text-xl">Krish & Yashvi (Bachu)</span>
+            </div>
+            <p class="text-xs text-slate-500">Happy Princess Day! Made with endless love & devotion.</p>
+        </footer>
+
+    </main>
+
+    <!-- FULL SCREEN LETTER MODAL -->
+    <div id="letter-modal-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-lg opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="glass-dark rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl border border-pink-500/40 text-left transform scale-95 transition-transform duration-500" id="letter-modal-box">
+            
+            <!-- Close Button -->
+            <button onclick="closeLetterModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white bg-white/10 hover:bg-white/20 w-9 h-9 rounded-full flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Letter Header -->
+            <div class="flex items-center space-x-3 mb-6 border-b border-pink-500/20 pb-4">
+                <div class="w-12 h-12 rounded-full overflow-hidden border border-pink-500/50 flex-shrink-0 bg-slate-800">
+                    <img src="photo1.jpeg" alt="Yashvi" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <span class="text-xs text-pink-400 font-bold uppercase tracking-wider">Princess Day Special Message</span>
+                    <h2 class="text-2xl font-bold font-handwriting text-white">To My Dearest Bachu (Yashvi), ♡</h2>
+                </div>
+            </div>
+
+            <!-- Letter Body -->
+            <div class="space-y-4 text-sm text-slate-300 leading-relaxed font-sans">
+                <p>
+                    My sweetest Bachu,
+                </p>
+                <p>
+                    Today is Princess Day, but honestly, every single day feels like royalty because I have you in my life. Since August 22, 2025, when our journey together officially began, my world has transformed into something so beautiful, warm, and meaningful[cite: 1, 2]. You are not just my girlfriend; you are my peace, my safe haven, and the absolute best part of every day.
+                </p>
+                <p>
+                    Whenever I look at you, whether you are smiling under the sunlight or sharing your thoughts with me, my heart swells with so much gratitude[cite: 1, 2]. You bring an unmatched grace and sweetness into everything you do. Even on my toughest days, just hearing your voice or seeing your face is enough to wash away all my worries.
+                </p>
+                <p>
+                    Thank you for trusting me, for loving me so purely, and for being the most incredible partner I could ever ask for. I promise to cherish you, protect your happiness, and stand by your side through every chapter of life. You deserve all the stars in the sky and all the happiness the universe has to offer.
+                </p>
+                <p class="pt-2">
+                    Happy Princess Day, my princess, my love, my Bachu. I love you more than words can ever capture.
+                </p>
+            </div>
+
+            <!-- Letter Signature -->
+            <div class="mt-8 pt-4 border-t border-pink-500/20 flex justify-between items-center">
+                <span class="text-xs text-slate-400">Forever yours,</span>
+                <span class="font-handwriting text-3xl text-pink-300 font-bold">Krish ♡</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Generate Floating Background Hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartIcons = ['❤️', '💖', '✨', '🌸', '👑'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 10 + 14) + 'px';
+                heart.style.animationDuration = (Math.random() * 4 + 7) + 's';
+                container.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 9000);
+            }, 700);
+        }
+
+        // Enter Website from Modal
+        function enterWebsite() {
+            const modal = document.getElementById('welcome-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                const main = document.getElementById('main-content');
+                main.classList.remove('hidden');
+                setTimeout(() => {
+                    main.style.opacity = '1';
+                }, 50);
+            }, 600);
+        }
+
+        // Open Big Letter Modal
+        function openLetterModal() {
+            const overlay = document.getElementById('letter-modal-overlay');
+            const box = document.getElementById('letter-modal-box');
+            overlay.classList.remove('pointer-events-none');
+            overlay.style.opacity = '1';
+            box.style.transform = 'scale(1)';
+        }
+
+        // Close Big Letter Modal
+        function closeLetterModal() {
+            const overlay = document.getElementById('letter-modal-overlay');
+            const box = document.getElementById('letter-modal-box');
+            overlay.style.opacity = '0';
+            box.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                overlay.classList.add('pointer-events-none');
+            }, 500);
+        }
+
+        // Live Relationship Timer since August 22, 2025
+        function updateTimer() {
+            const startDate = new Date('2025-08-22T00:00:00');
+            const now = new Date();
+            const diff = now - startDate;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / 1000 / 65) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('days-count').innerText = days;
+                document.getElementById('hours-count').innerText = hours;
+                document.getElementById('minutes-count').innerText = minutes;
+                document.getElementById('seconds-count').innerText = seconds;
+            }
+        }
+
+        window.onload = function() {
+            createFloatingHearts();
+            setInterval(updateTimer, 1000);
+            updateTimer();
+        };
+    </script>
+</body>
+</html>
